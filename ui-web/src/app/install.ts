@@ -42,7 +42,7 @@ import { agentsSource, startAgentHeartbeat } from '../features/subagents/source'
 import { onBoardEvent, refresh as refreshBoards } from '../features/tasks/boards'
 import { tasksSource } from '../features/tasks/source'
 import {
-  byKey as taskByKey, lendAnswer as lendTaskAnswer, lendFocus as lendTaskFocus, moveOnPending, onBoardUpdated,
+  byKey as taskByKey, lendAnswer as lendTaskAnswer, lendFocus as lendTaskFocus, onBoardUpdated,
   onNodeUpdated, onRunCompleted, onRunReplanned, onRunStarted, onSubagentStatus, refresh as refreshTasks,
   refreshBoard as refreshTaskBoard, reset as resetTasks, takeMoveOn,
 } from '../features/tasks/store'
@@ -342,7 +342,7 @@ export function installPushes(): void {
   settingsStore.lendAskInChat(askInChat)
   lendTaskAnswer(answerInChat)
   lendTaskFocus(focusChat)
-  lendBeforeSend({ pending: moveOnPending, take: takeMoveOn })
+  lendBeforeSend({ take: takeMoveOn })
   installPipeline()
 
   gateway().on('system.update_available', onUpdateAvailable)
